@@ -98,15 +98,28 @@ export function evaluate(c: Candidate, dn: Dense, ctx: EvalContext): EvalResult 
     if (bid <= 0 || marginEach <= 0) continue;
     const odds = flipOdds(dn, ctx.gapHours, d, sellPrice / bid - 1, cfg.maxHoldHours, taxRate);
     if (odds.nFill < m.minFillSamples || odds.nExit < m.minExitSamples) continue;
-    const caps = { limit: c.item.limit ?? 0, volume: Math.floor(m.participation * expSellersInGap), stake: Math.floor(alloc / bid) };
-    const qty = Math.min(caps.limit, caps.volume, caps.stake);
+    // P7: the sell side needs buyers too. Instant-buyers are who fill a sell offer; you get
+    // the same 20% share of them over the time a sell realistically takes (at least one gap,
+    // or the historical median time-to-exit if longer, never beyond the max hold).
+    const sellWindowH = Math.min(cfg.maxHoldHours, Math.max(ctx.gapHours, odds.medianHoursToExit ?? ctx.gapHours));
+    const expBuyersInSellWindow = (vol24.high / 24) * sellWindowH;
+    const caps = {
+      limit: c.item.limit ?? 0,
+      volume: Math.floor(m.participation * expSellersInGap),
+      sellVolume: Math.floor(m.participation * expBuyersInSellWindow),
+      stake: Math.floor(alloc / bid),
+    };
+    const qty = Math.min(caps.limit, caps.volume, caps.sellVolume, caps.stake);
     if (qty < 1) continue;
     const predProfit = marginEach * qty;
     if (predProfit < m.minProfitPerSlot[c.type]) continue;
     const lossEach = odds.avgLossRel * bid;
     const expProfit = Math.round(qty * odds.pFill * (odds.pExit * marginEach + (1 - odds.pExit) * lossEach));
     if (best && expProfit <= best.expProfit) continue;
-    const capBy = qty === caps.limit ? "buy limit" : qty === caps.volume ? "20% of expected sellers" : "slot budget";
+    const capBy = qty === caps.limit ? "buy limit"
+      : qty === caps.volume ? "20% of expected sellers (buy side)"
+      : qty === caps.sellVolume ? `20% of expected buyers over ~${Math.round(sellWindowH)}h (sell side)`
+      : "slot budget";
     const sb = cfg.strongBuy;
     best = {
       itemId: c.item.id, name: c.item.name, type: c.type,

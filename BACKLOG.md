@@ -12,3 +12,4 @@ and Jason approves it in DECISIONS.md.
 - **Size to actual cash** on the page, instead of the configured stake.
 - **Auto-reload the Flipping Utilities file** (File System Access API) so the weekly import is one click.
 - **Mobile layout polish.**
+- **Sell target can sit too high.** Some picks (e.g. Super restore(3)) show ~0% odds of reaching the sell target, yet a positive value at 72h, which means a lower target would sell. Consider choosing the sell target like the bid: search a few levels and pick the best expected value.

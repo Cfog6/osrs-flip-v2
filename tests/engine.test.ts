@@ -127,6 +127,23 @@ describe("recommend", () => {
       expect(r.rec.reasons.length).toBe(3);
     }
   });
+  it("P7: caps quantity by buyers on the sell side, not just sellers on the buy side", () => {
+    // ~1,000gp item: plenty of instant-sellers (easy to buy), few instant-buyers (hard to sell)
+    const series = wave(365).map((p) => ({
+      ...p, avgLowPrice: Math.round(p.avgLowPrice! / 100), avgHighPrice: Math.round(p.avgHighPrice! / 100),
+      lowPriceVolume: 5000, highPriceVolume: 20,
+    }));
+    const low = series[series.length - 1].avgLowPrice!;
+    const bulk = { id: 98, name: "Test bolts", limit: 11_000 };
+    const loose = { ...cfg, method: { ...cfg.method, minProfitPerSlot: { gear: 0, quick: 0 } } } as Config;
+    const r = evaluate({ item: bulk, type: "quick", low, high: Math.round(low * 1.04), naive: 0 }, densify(series), { ...ctx, cfg: loose, gapHours: 6 });
+    expect(r.ok).toBe(true);
+    if (r.ok) {
+      // buy side alone would allow 0.2 * 5000/h * 6h = 6,000; buyers (20/h) allow at most 0.2 * 20 * 72h = 288
+      expect(r.rec.qty).toBeLessThanOrEqual(288);
+      expect(r.rec.reasons[2]).toContain("sell side");
+    }
+  });
   it("rejects falling items", () => {
     const series = wave(365, -0.003).map((p) => ({ ...p, avgLowPrice: p.avgLowPrice! * 50, avgHighPrice: p.avgHighPrice! * 50, lowPriceVolume: 6, highPriceVolume: 6 }));
     const low = series[series.length - 1].avgLowPrice!;

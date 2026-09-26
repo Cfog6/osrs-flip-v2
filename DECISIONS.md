@@ -45,6 +45,38 @@ Every proposal and decision, in order. This is also the record for the AI-coding
 - Takeaway to test: at 100m, realistic expected profit may be a few hundred k per session. The 2-week test will show
   whether that's the reality.
 
+## 2026-09-26: P7 sell-side volume cap (approved, implemented)
+
+- **Problem:** quantity was capped by sellers on the buy side, but nothing checked that enough buyers exist to sell that quantity back.
+- **Change:** quantity is also capped at 20% of the expected instant-buyers over the sell window.
+  The sell window is the gap, or the historical median time-to-exit if that's longer, and never more than 72h.
+  The detail view names the binding cap.
+- **Effect on the Fri 16:00 fixture:** 1 of 14 recommendations changed (Guthix rest(4) 777 → 641). The plan's total expected profit didn't change.
+  The bulk items (e.g. 11,000 Adamant bolts) have deep buyer volume, so this is a safeguard for thin markets and doesn't change the typical plan.
+
+## 2026-09-26: trade-volume benchmarks from public sources
+
+FlipSmart published a distribution of daily volume across active GE items (July 2026, wiki API data, so the same RuneLite-only sample as ours):
+
+| Daily volume | Percentile | Their guidance |
+|---|---|---|
+| 68,000+ | top 1% | fills in minutes; thin margins |
+| 6,700+ | top 5% | reliable same-session flips |
+| 2,000+ | top 10% | comfortable for active flipping; "stay above ~2,000 to fill inside a session" |
+| 140+ | top 25% | workable overnight; slow to fill actively |
+| < 140 | bottom 75% | expect to wait, and to move the price |
+
+Other sources are qualitative ("thousands per day" for GE Margin; "check volume, 10 trades/day will leave you waiting" for OSRS Exchange).
+
+**How our settings compare:**
+- Quick floor 3,000/day sits just above the 2,000 "same-session" line. ✅ Every live quick pick is 4,881 to 1.6m/day.
+- Gear floor **12/day is far below** the 140 "workable overnight" line. In practice every live gear pick is 140–1,010/day,
+  because the 20% participation caps drive thin items to quantity 0. So the effective floor is already ~140, but only by accident.
+- **P8 (proposed):** raise `universe.gear.minDailyVolume` from 12 to 140 so the rule is explicit and matches the public benchmark.
+  Expected effect on today's plan: none. It only stops edge cases slipping through.
+- Short weekend gaps (1–2h) fall in the "active" regime where sources say ~2,000+/day. Gear at 140–1,000/day will rarely fill in 2h.
+  The per-gap fill odds already reflect that, so no change is proposed. Watch it in the weekly report.
+
 ## Open questions for the first weekly review
 1. Is the 60% target right, given model-expected capture? (Keep it, or also track calibration as its own goal.)
 2. Should long-shot recommendations (fill < 25%) take slots, or should those slots stay empty?
