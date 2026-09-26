@@ -6,7 +6,7 @@
  */
 import type { Config, Recommendation } from "./types";
 
-type Draft = Omit<Recommendation, "recId" | "ts">;
+type Draft = Omit<Recommendation, "recId" | "ts" | "configVersion">;
 const key = (r: { type: string; itemId: number }) => `${r.type}:${r.itemId}`;
 
 export function parseLog(text: string): Recommendation[] {
@@ -31,7 +31,7 @@ function materiallyChanged(prev: Recommendation, next: Draft, nowMs: number, cfg
 }
 
 /** Returns the recs to show (logged versions) and the new lines to append. */
-export function reconcile(drafts: Draft[], prevLog: Recommendation[], nowMs: number, cfg: Config["log"]): { shown: Recommendation[]; appended: Recommendation[] } {
+export function reconcile(drafts: Draft[], prevLog: Recommendation[], nowMs: number, cfg: Config["log"], configVersion?: string): { shown: Recommendation[]; appended: Recommendation[] } {
   const last = lastByKey(prevLog);
   const shown: Recommendation[] = [];
   const appended: Recommendation[] = [];
@@ -40,7 +40,7 @@ export function reconcile(drafts: Draft[], prevLog: Recommendation[], nowMs: num
     if (prev && !materiallyChanged(prev, d, nowMs, cfg)) {
       shown.push(prev);
     } else {
-      const rec: Recommendation = { recId: `${d.itemId}-${nowMs}`, ts: nowMs, ...d };
+      const rec: Recommendation = { recId: `${d.itemId}-${nowMs}`, ts: nowMs, ...(configVersion ? { configVersion } : {}), ...d };
       appended.push(rec);
       shown.push(rec);
     }

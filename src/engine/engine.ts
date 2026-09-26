@@ -27,7 +27,7 @@ export async function runEngine(wiki: WikiClient, cfg: Config, prevLog: Recommen
   }
 
   const rank = (t: "gear" | "quick") => drafts.filter((d) => d.type === t).sort((a, b) => b.expProfit - a.expProfit).slice(0, cfg.method.shortlistPerType);
-  const { shown, appended } = reconcile([...rank("gear"), ...rank("quick")], prevLog, nowMs, cfg.log);
+  const { shown, appended } = reconcile([...rank("gear"), ...rank("quick")], prevLog, nowMs, cfg.log, cfg.version);
 
   const plan: PlanFile = {
     generatedAt: nowMs, configVersion: cfg.version,

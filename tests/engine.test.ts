@@ -169,6 +169,8 @@ describe("log", () => {
     const moved = reconcile([{ ...draft, bid: 5_200_000 }], prev, 2_000, cfg.log);
     expect(moved.appended).toHaveLength(1);
     expect(moved.shown[0].recId).toBe("99-2000");
+    const stamped = reconcile([{ ...draft, bid: 5_200_000 }], prev, 2_000, cfg.log, "9.9.9");
+    expect(stamped.appended[0].configVersion).toBe("9.9.9");
   });
 });
 

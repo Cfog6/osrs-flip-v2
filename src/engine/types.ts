@@ -38,6 +38,7 @@ export interface SeriesPoint extends IntervalAgg {
 export interface Recommendation {
   recId: string;
   ts: number;               // unix ms when first logged
+  configVersion?: string;   // config.version that produced it (absent on lines logged before 2.1.0)
   itemId: number;
   name: string;
   type: SlotType;

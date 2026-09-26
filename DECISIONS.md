@@ -79,6 +79,14 @@ Other sources are qualitative ("thousands per day" for GE Margin; "check volume,
 - Short weekend gaps (1–2h) fall in the "active" regime where sources say ~2,000+/day. Gear at 140–1,000/day will rarely fill in 2h.
   The per-gap fill odds already reflect that, so no change is proposed. Watch it in the weekly report.
 
+## Config versions
+`config.version` goes up with every methodology change (minor) or bug fix that changes output (patch). Each new line in `data/recs.jsonl` records it as `configVersion`, so the weekly review can split results by version. Lines without it came from 2.0.0.
+
+| Version | Date | Changes |
+|---|---|---|
+| 2.0.0 | 2026-09-25 | v2 launch |
+| 2.1.0 | 2026-09-25 | P7 sell-side buyer-volume cap; P8 gear floor 12 → 140/day |
+
 ## Open questions for the first weekly review
 1. Is the 60% target right, given model-expected capture? (Keep it, or also track calibration as its own goal.)
 2. Should long-shot recommendations (fill < 25%) take slots, or should those slots stay empty?
