@@ -72,8 +72,10 @@ Other sources are qualitative ("thousands per day" for GE Margin; "check volume,
 - Quick floor 3,000/day sits just above the 2,000 "same-session" line. ✅ Every live quick pick is 4,881 to 1.6m/day.
 - Gear floor **12/day is far below** the 140 "workable overnight" line. In practice every live gear pick is 140–1,010/day,
   because the 20% participation caps drive thin items to quantity 0. So the effective floor is already ~140, but only by accident.
-- **P8 (proposed):** raise `universe.gear.minDailyVolume` from 12 to 140 so the rule is explicit and matches the public benchmark.
-  Expected effect on today's plan: none. It only stops edge cases slipping through.
+- **P8 (approved, implemented 2026-09-25):** raised `universe.gear.minDailyVolume` from 12 to 140 so the rule is explicit and matches the public benchmark.
+  Measured on live prices (7.8h gap): the 4 gear slots are unchanged. In the ranked list, Flared trousers (128/day, #7) dropped out and Black mask (10) (380/day) came in at #10. Quick is unchanged.
+  Side effect: the pre-screen needs `min(buy, sell trades last hour) × 24 ≥ minDailyVolume / 4`, so gear now needs ≥2 trades on each side in the last hour (was ≥1).
+  A 140/day item can fail that during a dead overnight hour. Accepted for now; if the weekly report shows good gear missing from overnight plans, decouple the pre-screen floor.
 - Short weekend gaps (1–2h) fall in the "active" regime where sources say ~2,000+/day. Gear at 140–1,000/day will rarely fill in 2h.
   The per-gap fill odds already reflect that, so no change is proposed. Watch it in the weekly report.
 

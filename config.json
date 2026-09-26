@@ -15,7 +15,7 @@
   },
   "digestLeadMinutes": 15,
   "universe": {
-    "gear":  { "minPrice": 1000000, "maxPrice": 25000000, "minDailyVolume": 12,   "maxQuoteAgeMinutes": 180 },
+    "gear":  { "minPrice": 1000000, "maxPrice": 25000000, "minDailyVolume": 140,  "maxQuoteAgeMinutes": 180 },
     "quick": { "minPrice": 50,      "maxPrice": 999999,   "minDailyVolume": 3000, "maxQuoteAgeMinutes": 60 },
     "maxPrintDeviation": 0.15,
     "excludeNames": ["Old school bond"]
