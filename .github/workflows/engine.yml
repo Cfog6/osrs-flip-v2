@@ -1,0 +1,38 @@
+name: engine
+# Builds the plan every 15 minutes, appends new recommendations to data/recs.jsonl,
+# sends Discord messages, and commits the results. Off-the-hour minutes avoid GitHub's busiest times.
+on:
+  schedule:
+    - cron: "3,18,33,48 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: engine
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run engine
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      - name: Commit plan and log
+        run: |
+          git config user.name "flip-engine"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -m "engine: plan $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase
+          git push

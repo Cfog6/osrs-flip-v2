@@ -1,0 +1,7 @@
+node_modules/
+dist/
+# Your Flipping Utilities export and anything else personal. Never committed.
+private/
+*.local
+.DS_Store
+Thumbs.db

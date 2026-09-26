@@ -1,0 +1,44 @@
+{
+  "version": "2.0.0",
+  "account": "HardContract",
+  "timezone": "America/Chicago",
+  "stake": 100000000,
+  "cashBufferPct": 0.10,
+  "slots": { "gear": 4, "quick": 3 },
+  "gearShareOfStake": 0.75,
+  "maxPerItem": 25000000,
+  "maxHoldHours": 72,
+  "maxUnattendedCheckHours": 4,
+  "playWindows": {
+    "weekday": [["06:00", "07:30"], ["16:00", "19:00"], ["22:00", "24:00"]],
+    "weekend": [["06:00", "08:00"], ["10:00", "14:00"], ["16:00", "20:00"], ["21:00", "24:00"]]
+  },
+  "digestLeadMinutes": 15,
+  "universe": {
+    "gear":  { "minPrice": 1000000, "maxPrice": 25000000, "minDailyVolume": 12,   "maxQuoteAgeMinutes": 180 },
+    "quick": { "minPrice": 50,      "maxPrice": 999999,   "minDailyVolume": 3000, "maxQuoteAgeMinutes": 60 },
+    "maxPrintDeviation": 0.15,
+    "excludeNames": ["Old school bond"]
+  },
+  "method": {
+    "participation": 0.2,
+    "bidDiscounts": [0, 0.005, 0.01, 0.02, 0.03, 0.05],
+    "sellPercentile": 0.6,
+    "sellLookbackHours": 24,
+    "trendLookbackHours": 72,
+    "maxDeclinePctPerDay": 3,
+    "minHistoryHours": 168,
+    "minFillSamples": 30,
+    "minExitSamples": 10,
+    "candidatesPerType": 25,
+    "shortlistPerType": 10,
+    "minProfitPerSlot": { "gear": 300000, "quick": 100000 }
+  },
+  "strongBuy": {
+    "minFillProb": 0.6,
+    "minExitProb": 0.7,
+    "minExpectedProfit": { "gear": 750000, "quick": 250000 }
+  },
+  "log": { "materialChangePct": 0.01, "qtyChangePct": 0.25, "refreshHours": 6 },
+  "evaluation": { "targetCapture": 0.6, "minLinkedFlips": 30, "qtyTolerance": 1.1, "linkGraceHours": 1 }
+}
