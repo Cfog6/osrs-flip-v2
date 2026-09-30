@@ -1,5 +1,5 @@
 {
- "generatedAt": 1790763199375,
+ "generatedAt": 1790764241870,
  "configVersion": "2.1.0",
  "placementAt": 1790766000000,
  "nextCheckAt": 1790802000000,
@@ -412,37 +412,6 @@
    ]
   },
   {
-   "recId": "2452-1790763199375",
-   "ts": 1790763199375,
-   "configVersion": "2.1.0",
-   "itemId": 2452,
-   "name": "Antifire potion(4)",
-   "type": "quick",
-   "bid": 882,
-   "sell": 996,
-   "qty": 2000,
-   "limit": 2000,
-   "taxEach": 19,
-   "predMarginEach": 95,
-   "predProfit": 190000,
-   "pFill": 0.724,
-   "pExit": 0.672,
-   "nFillSamples": 344,
-   "nExitSamples": 247,
-   "medianHoursToExit": 15,
-   "expProfit": 56733,
-   "gapHours": 10,
-   "checkBackAt": 1790802000000,
-   "trendPctPerDay": 4.184,
-   "dailyVolume": 71019,
-   "strong": false,
-   "reasons": [
-    "Bid 2.0% under the live low. Similar bids filled within 10h in 72% of 344 past windows.",
-    "After filling, the sell target was reached within 72h in 67% of 247 cases (median 15h).",
-    "Trend +4.2%/day. 71,019 traded in the last 24h. Quantity capped by buy limit."
-   ]
-  },
-  {
    "recId": "9242-1790763199375",
    "ts": 1790763199375,
    "configVersion": "2.1.0",
@@ -595,6 +564,37 @@
     "Bid 1.0% under the live low. Similar bids filled within 10h in 46% of 355 past windows.",
     "After filling, the sell target was reached within 72h in 91% of 161 cases (median 8h).",
     "Trend +1.9%/day. 1,275,375 traded in the last 24h. Quantity capped by slot budget."
+   ]
+  },
+  {
+   "recId": "31973-1790745136350",
+   "ts": 1790745136350,
+   "configVersion": "2.1.0",
+   "itemId": 31973,
+   "name": "Mahogany repair kit",
+   "type": "quick",
+   "bid": 1145,
+   "sell": 1204,
+   "qty": 6550,
+   "limit": 13000,
+   "taxEach": 24,
+   "predMarginEach": 35,
+   "predProfit": 229250,
+   "pFill": 0.884,
+   "pExit": 0.72,
+   "nFillSamples": 354,
+   "nExitSamples": 293,
+   "medianHoursToExit": 12,
+   "expProfit": 46879,
+   "gapHours": 10,
+   "checkBackAt": 1790802000000,
+   "trendPctPerDay": -1.89,
+   "dailyVolume": 325725,
+   "strong": false,
+   "reasons": [
+    "Bid at the live low. Similar bids filled within 10h in 88% of 354 past windows.",
+    "After filling, the sell target was reached within 72h in 72% of 293 cases (median 12h).",
+    "Trend -1.9%/day. 325,725 traded in the last 24h. Quantity capped by slot budget."
    ]
   },
   {
