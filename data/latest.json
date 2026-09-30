@@ -1,9 +1,9 @@
 {
- "generatedAt": 1790766739952,
+ "generatedAt": 1790767674629,
  "configVersion": "2.1.0",
- "placementAt": 1790766739952,
+ "placementAt": 1790767674629,
  "nextCheckAt": 1790802000000,
- "gapHours": 9.794457777777778,
+ "gapHours": 9.534825277777777,
  "inWindow": true,
  "gear": [
   {
