@@ -1,9 +1,9 @@
 {
- "generatedAt": 1791372605066,
+ "generatedAt": 1791373579872,
  "configVersion": "2.1.0",
- "placementAt": 1791372605066,
+ "placementAt": 1791373579872,
  "nextCheckAt": 1791406800000,
- "gapHours": 9.498592777777779,
+ "gapHours": 9.227813333333334,
  "inWindow": true,
  "gear": [
   {
@@ -474,37 +474,6 @@
    ]
   },
   {
-   "recId": "29116-1791353886622",
-   "ts": 1791353886622,
-   "configVersion": "2.1.0",
-   "itemId": 29116,
-   "name": "Raw sunlight antelope",
-   "type": "quick",
-   "bid": 1406,
-   "sell": 1520,
-   "qty": 5334,
-   "limit": 13000,
-   "taxEach": 30,
-   "predMarginEach": 84,
-   "predProfit": 448056,
-   "pFill": 0.2,
-   "pExit": 0.929,
-   "nFillSamples": 355,
-   "nExitSamples": 70,
-   "medianHoursToExit": 5,
-   "expProfit": 79422,
-   "gapHours": 10,
-   "checkBackAt": 1791406800000,
-   "trendPctPerDay": -1.808,
-   "dailyVolume": 151394,
-   "strong": false,
-   "reasons": [
-    "Bid 5.0% under the live low. Similar bids filled within 10h in 20% of 355 past windows.",
-    "After filling, the sell target was reached within 72h in 93% of 70 cases (median 5h).",
-    "Trend -1.8%/day. 151,394 traded in the last 24h. Quantity capped by slot budget."
-   ]
-  },
-  {
    "recId": "103-1791371521838",
    "ts": 1791371521838,
    "configVersion": "2.1.0",
@@ -533,37 +502,6 @@
     "Bid 3.0% under the live low. Similar bids filled within 10h in 39% of 349 past windows.",
     "After filling, the sell target was reached within 72h in 88% of 127 cases (median 9.5h).",
     "Trend +1.8%/day. 218,549 traded in the last 24h. Quantity capped by 20% of expected sellers (buy side)."
-   ]
-  },
-  {
-   "recId": "203-1791372605066",
-   "ts": 1791372605066,
-   "configVersion": "2.1.0",
-   "itemId": 203,
-   "name": "Grimy tarromin",
-   "type": "quick",
-   "bid": 197,
-   "sell": 215,
-   "qty": 9939,
-   "limit": 13000,
-   "taxEach": 4,
-   "predMarginEach": 14,
-   "predProfit": 139146,
-   "pFill": 0.399,
-   "pExit": 1,
-   "nFillSamples": 356,
-   "nExitSamples": 142,
-   "medianHoursToExit": 8,
-   "expProfit": 55502,
-   "gapHours": 9.499,
-   "checkBackAt": 1791406800000,
-   "trendPctPerDay": 0.412,
-   "dailyVolume": 347709,
-   "strong": false,
-   "reasons": [
-    "Bid 5.0% under the live low. Similar bids filled within 9h in 40% of 356 past windows.",
-    "After filling, the sell target was reached within 72h in 100% of 142 cases (median 8h).",
-    "Trend +0.4%/day. 347,709 traded in the last 24h. Quantity capped by 20% of expected buyers over ~9h (sell side)."
    ]
   },
   {
@@ -598,6 +536,37 @@
    ]
   },
   {
+   "recId": "203-1791372605066",
+   "ts": 1791372605066,
+   "configVersion": "2.1.0",
+   "itemId": 203,
+   "name": "Grimy tarromin",
+   "type": "quick",
+   "bid": 197,
+   "sell": 215,
+   "qty": 9939,
+   "limit": 13000,
+   "taxEach": 4,
+   "predMarginEach": 14,
+   "predProfit": 139146,
+   "pFill": 0.399,
+   "pExit": 1,
+   "nFillSamples": 356,
+   "nExitSamples": 142,
+   "medianHoursToExit": 8,
+   "expProfit": 55502,
+   "gapHours": 9.499,
+   "checkBackAt": 1791406800000,
+   "trendPctPerDay": 0.412,
+   "dailyVolume": 347709,
+   "strong": false,
+   "reasons": [
+    "Bid 5.0% under the live low. Similar bids filled within 9h in 40% of 356 past windows.",
+    "After filling, the sell target was reached within 72h in 100% of 142 cases (median 8h).",
+    "Trend +0.4%/day. 347,709 traded in the last 24h. Quantity capped by 20% of expected buyers over ~9h (sell side)."
+   ]
+  },
+  {
    "recId": "13573-1791371521838",
    "ts": 1791371521838,
    "configVersion": "2.1.0",
@@ -627,13 +596,44 @@
     "After filling, the sell target was reached within 72h in 85% of 252 cases (median 7.5h).",
     "Trend -0.7%/day. 1,573,908 traded in the last 24h. Quantity capped by buy limit."
    ]
+  },
+  {
+   "recId": "11092-1791355334187",
+   "ts": 1791355334187,
+   "configVersion": "2.1.0",
+   "itemId": 11092,
+   "name": "Diamond bracelet",
+   "type": "quick",
+   "bid": 1839,
+   "sell": 1903,
+   "qty": 4078,
+   "limit": 10000,
+   "taxEach": 38,
+   "predMarginEach": 26,
+   "predProfit": 106028,
+   "pFill": 0.904,
+   "pExit": 0.848,
+   "nFillSamples": 354,
+   "nExitSamples": 315,
+   "medianHoursToExit": 4,
+   "expProfit": 38988,
+   "gapHours": 10,
+   "checkBackAt": 1791406800000,
+   "trendPctPerDay": 0.043,
+   "dailyVolume": 216226,
+   "strong": false,
+   "reasons": [
+    "Bid at the live low. Similar bids filled within 10h in 90% of 354 past windows.",
+    "After filling, the sell target was reached within 72h in 85% of 315 cases (median 4h).",
+    "Trend +0.0%/day. 216,226 traded in the last 24h. Quantity capped by slot budget."
+   ]
   }
  ],
  "stats": {
   "scanned": 4662,
   "candidates": 50,
   "evaluated": 50,
-  "excludedFalling": 8,
+  "excludedFalling": 7,
   "excludedThinHistory": 0
  }
 }
